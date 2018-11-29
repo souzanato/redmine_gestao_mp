@@ -1,0 +1,32 @@
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<h2><%=l(:redmine_gestao_mp_label_issues)%></h2>
+
+<table id="redmine-gestao-mp-issues-table" data-issues="<%=@project_hierarchy%>">
+	<colgroup>
+		<col width="80%"></col>
+		<col width="10%"></col>
+		<col width="10%"></col>
+	</colgroup>
+
+	<thead>
+		<tr> 
+			<th></th> 
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<!-- Optionally define a row that serves as template, when new nodes are created: -->
+	<tbody>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+

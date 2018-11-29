@@ -1,0 +1,10 @@
+<h3><%= l(:redmine_gestao_mp_menu) %></h3>
+
+<ul>
+	<li><%= link_to l(:label_home), redmine_gestao_mp_home_path(@project) %></li>
+	
+	<!-- Menu de tarefas: exibe somente se possuir permissao -->
+	<% if can?(:index, :redmine_gestao_mp_issues) %>
+		<li><%= link_to l(:label_issue_plural), redmine_gestao_mp_issues_path(@project) %></li>	
+	<% end %>	
+</ul>

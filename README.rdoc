@@ -1,0 +1,5 @@
+= Gestão MP
+
+*Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento*
+
+Esse é um plugin redmine que conta com algumas funcionalidades de gestão adaptadas para a realidade do Ministério do Planejamento.

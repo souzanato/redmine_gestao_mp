@@ -1,0 +1,6 @@
+en:
+  redmine_gestao_mp: "Gestão MP"
+
+  # permissions
+  project_module_gestao_mp: "Gestão MP"
+  permission_view_tasks: "Ver tarefas"

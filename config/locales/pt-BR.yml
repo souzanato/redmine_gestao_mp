@@ -1,0 +1,13 @@
+pt-BR:
+  redmine_gestao_mp: "Gestão MP"
+
+  # sidebar
+  redmine_gestao_mp_menu: "Menu Gestão MP"
+  label_issue_plural: "Tarefas"
+
+  # permissions
+  project_module_redmine_gestao_mp: "Gestão MP"
+  permission_redmine_gestao_mp_view_issues: "Ver tarefas"
+
+  # issues
+  redmine_gestao_mp_label_issues: "Tarefas"
