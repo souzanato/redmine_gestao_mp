@@ -4,8 +4,8 @@ require 'redmine'
 # require_dependency 'redmine_gestao_mp/include_stylesheets_hook'
 
 ApplicationHelper.send(:include, RedmineGestaoMp::ApplicationHelperPatch)
-# ActionView::Helpers::TranslationHelper.send(:include, RedmineGestaoMp::TranslationHelperPatch)
 Project.send(:include, RedmineGestaoMp::ProjectPatch)
+User.send(:include, RedmineGestaoMp::UserPatch)
 
 
 Redmine::Plugin.register :redmine_gestao_mp do

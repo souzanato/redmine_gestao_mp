@@ -2,7 +2,7 @@ $(document).ready(function() {
 	if (assetsAuthorized('redmine_gestao_mp_issues', 'index')) {
 
 		$("#redmine-gestao-mp-issues-table").fancytree({
-			extensions: ["table"],
+			extensions: ["table", "persist"],
 			table: {
 				indentation: 20,      // indent 20px per node level
 				nodeColumnIdx: 0     // render the node title into the 2nd column
@@ -14,6 +14,18 @@ $(document).ready(function() {
 				$tdList.eq(1).text(node.data.start_date);
 				$tdList.eq(2).text(node.data.due_date);
 			},
+      persist: {
+        expandLazy: true,
+        // fireActivate: false,    // false: suppress `activate` event after active node was restored
+        // overrideSource: false,  // true: cookie takes precedence over `source` data attributes.
+        store: "auto" // 'cookie', 'local': use localStore, 'session': sessionStore
+        // Sample for a custom store:
+        // store: {
+        //   get: function(key){ this.info("get(" + key + ")"); return window.sessionStorage.getItem(key); },
+        //   set: function(key, value){ this.info("set(" + key + ", " + value + ")"); window.sessionStorage.setItem(key, value); },
+        //   remove: function(key){ this.info("remove(" + key + ")"); window.sessionStorage.removeItem(key); }
+        // }
+      },
 			renderNode: function(event, data) {
 				var node = data.node;
         var $span = $(node.span);

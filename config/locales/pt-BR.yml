@@ -1,5 +1,6 @@
 pt-BR:
   redmine_gestao_mp: "Gestão MP"
+  welcome_to_gestao_mp: "Bem vindo ao Gestao MP. "
 
   # sidebar
   redmine_gestao_mp_menu: "Menu Gestão MP"

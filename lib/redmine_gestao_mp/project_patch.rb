@@ -10,7 +10,9 @@ module RedmineGestaoMp
             parent_and_children(parent, children)
           end
 
-          children.sort{|a,b| a.created_on<=>b.created_on}
+          return children if User.current.admin
+          available_projects = User.current.memberships.collect(&:project).map{|p| p}
+          children.select{|p| available_projects.include?(p)}.sort{|a,b| a.created_on<=>b.created_on}
         end
 
         def parent_and_children_issues
