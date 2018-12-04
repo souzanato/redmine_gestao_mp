@@ -1,0 +1,18 @@
+<table class="list redmine-gestao-mp-configs">
+  <thead>
+    <tr>
+      <th><%= t('redmine_gestao_mp_label_config_display_name') %></th>
+      <th><%= t('redmine_gestao_mp_label_config_value') %></th>
+      <th><%= t('redmine_gestao_mp_label_config_description') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% RedmineGestaoMpConfig.where(scope: 'Issue').each do |config| %>
+  		<tr>
+  			<td><%= config.display_name %></td>
+  			<td> <%= config.value %> </td>
+  			<td><%= config.description %></td>
+  		</tr>
+  	<% end %>
+  </tbody>
+</table>

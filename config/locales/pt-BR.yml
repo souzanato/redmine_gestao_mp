@@ -1,14 +1,41 @@
 pt-BR:
+  ### Permissões ###
+  # Geral #
+  project_module_redmine_gestao_mp: "Gestão MP"
+  
+  # Tarefas #
+  permission_redmine_gestao_mp_view_issues: "Ver tarefas"
+  
+  # Configurações #
+  permission_redmine_gestao_mp_view_config: "Ver configurações"
+  permission_redmine_gestao_mp_create_config: "Criar configurações"
+  permission_redmine_gestao_mp_edit_config: "Editar configurações"
+  permission_redmine_gestao_mp_destroy_config: "Destruir configurações"
+  ### Fim Permissões ###
+
+  # General
   redmine_gestao_mp: "Gestão MP"
-  welcome_to_gestao_mp: "Bem vindo ao Gestao MP. "
+  redmine_gestao_mp_youre_ready_to_start: "Você está pronto para começar!"
 
   # sidebar
   redmine_gestao_mp_menu: "Menu Gestão MP"
-  label_issue_plural: "Tarefas"
-
-  # permissions
-  project_module_redmine_gestao_mp: "Gestão MP"
-  permission_redmine_gestao_mp_view_issues: "Ver tarefas"
+  redmine_gestao_mp_label_home: "Início"
+  redmine_gestao_mp_label_issue_plural: "Tarefas"
+  redmine_gestao_mp_config_plural: "Configurações"
 
   # issues
   redmine_gestao_mp_label_issues: "Tarefas"
+  redmine_gestao_mp_project_subproject_issue: "Projeto / Subprojeto / Tarefa"
+  redmine_gestao_mp_start_date: "Início"
+  redmine_gestao_mp_end_date: "Término"
+  redmine_gestao_mp_assigned_to: "Responsável"
+
+  # config
+  redmine_gestao_mp_label_config_plural: "Configurações"
+  redmine_gestao_mp_label_config_name: "Nome Técnico"
+  redmine_gestao_mp_label_config_display_name: "Nome"
+  redmine_gestao_mp_label_config_scope: "Escopo"
+  redmine_gestao_mp_label_config_value: "Valor"
+  redmine_gestao_mp_label_config_description: "Descrição"
+  redmine_gestao_mp_load_redmine_gestao_mp_configs: "Carrege as configurações iniciais"
+  redmine_gestao_mp_to_start: "para começar"

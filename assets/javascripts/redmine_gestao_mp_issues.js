@@ -5,16 +5,19 @@ $(document).ready(function() {
 			extensions: ["table", "persist"],
 			table: {
 				indentation: 20,      // indent 20px per node level
-				nodeColumnIdx: 0     // render the node title into the 2nd column
+				nodeColumnIdx: 1     // render the node title into the 2nd column
 			},
 			source: $('#redmine-gestao-mp-issues-table').data('issues'),
 			renderColumns: function(event, data) {
 				var node = data.node, $tdList = $(node.tr).find(">td");
 				
-				$tdList.eq(1).text(node.data.start_date);
-				$tdList.eq(2).text(node.data.due_date);
+				$tdList.eq(0).html("<span class='redmine-gestao-mp-light " + node.data.light + "-light'></span>");
+				$tdList.eq(2).text(node.data.start_date);
+				$tdList.eq(3).text(node.data.due_date);
+				$tdList.eq(4).text(node.data.assigned_to);
 			},
       persist: {
+      	cookiePrefix: "fancytree-redmine-gestao-mp-" + $('#redmine-gestao-mp-issues-table').data('project-id') + "-project",
         expandLazy: true,
         // fireActivate: false,    // false: suppress `activate` event after active node was restored
         // overrideSource: false,  // true: cookie takes precedence over `source` data attributes.

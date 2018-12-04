@@ -2,6 +2,10 @@
 
 <%= welcome_message.html_safe %>
 
+<% unless redmine_gestao_mp_config_loaded? %>
+	<%= render partial: 'redmine_gestao_mp_config/no_redmine_gestao_mp_config_found' %>
+<% end %>
+
 <% content_for :sidebar do %>
     <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
 <% end %>

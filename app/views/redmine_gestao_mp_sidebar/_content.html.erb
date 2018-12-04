@@ -1,11 +1,16 @@
 <h3><%= l(:redmine_gestao_mp_menu) %></h3>
 <div id="admin-menu">
 	<ul>
-		<li><%= active_link_to l(:label_home), redmine_gestao_mp_home_path(@project), class: 'redmine-gestao-mp-home-icon', active: [['redmine_gestao_mp_home'], []], wrap_tag: :li %></li>
+		<li><%= active_link_to l(:redmine_gestao_mp_label_home), redmine_gestao_mp_home_path(@project), class: 'redmine-gestao-mp-home-icon', active: [['redmine_gestao_mp_home'], []], wrap_tag: :li %></li>
 		
 		<!-- Menu de tarefas: exibe somente se possuir permissao -->
 		<% if can?(:index, :redmine_gestao_mp_issues) %>
-			<li><%= active_link_to l(:label_issue_plural), redmine_gestao_mp_issues_path(@project), class: 'icon-issue', active: [['redmine_gestao_mp_issues'], []], wrap_tag: :li %></li>	
+			<li><%= active_link_to l(:redmine_gestao_mp_label_issue_plural), redmine_gestao_mp_issues_path(@project), class: 'icon-issue', active: [['redmine_gestao_mp_issues'], []], wrap_tag: :li %></li>	
+		<% end %>	
+
+		<!-- Menu de configuração: exibe somente se possuir permissao -->
+		<% if can?(:index, :redmine_gestao_mp_config) %>
+			<li><%= active_link_to l(:redmine_gestao_mp_config_plural), project_redmine_gestao_mp_config_index_path(@project, tab: 'issue'), class: 'settings', active: [['redmine_gestao_mp_config'], []], wrap_tag: :li %></li>	
 		<% end %>	
 	</ul>
 </div>

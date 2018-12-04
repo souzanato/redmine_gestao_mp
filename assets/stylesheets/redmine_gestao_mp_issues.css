@@ -1,3 +1,31 @@
 table#redmine-gestao-mp-issues-table {
 	width: 100%;
 }
+
+table#redmine-gestao-mp-issues-table thead tr th {
+	text-align: left;
+}
+
+.redmine-gestao-mp-light {
+	height: 10px;
+	width: 10px;
+ 	border-radius: 50%;
+ 	display: inline-block;
+}
+
+.redmine-gestao-mp-light.green-light {
+	background-color: #34a853;
+}
+
+.redmine-gestao-mp-light.warning-light {
+	background-color: #fbbc05;
+}
+
+.redmine-gestao-mp-light.danger-light {
+	background-color: #ea4335;
+}
+
+.redmine-gestao-mp-light.neutral-light {
+	background-color: #7b7b7b;
+}
+

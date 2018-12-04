@@ -1,0 +1,30 @@
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<h2><%=l(:redmine_gestao_mp_label_config_plural)%></h2>
+
+<div class="tabs">
+  <ul>
+    <li>
+			<%= link_to t(:redmine_gestao_mp_label_issue_plural), { :tab => 'issue' }, :id => "tab-issue", :class => ('issue' != params[:tab] ? nil : 'selected'), :onclick => "showTab('issue', this.href); this.blur(); return false;" %>		
+    </li>
+  </ul>
+  
+  <div class="tabs-buttons" style="display:none;">
+    <button class="tab-left" type="button" onclick="moveTabLeft(this);"></button>
+    <button class="tab-right" type="button" onclick="moveTabRight(this);"></button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(displayTabsButtons);
+  $(window).resize(displayTabsButtons);
+</script>
+
+<div class="tab-content" id="tab-content-issue" style="<%= 'issue' != params[:tab] ? 'display:none' : nil %>">
+  <%= render partial: 'issues' %>
+</div>
+
