@@ -9,7 +9,7 @@
 		<% end %>	
 
 		<!-- Menu de configuração: exibe somente se possuir permissao -->
-		<% if can?(:index, :redmine_gestao_mp_config) %>
+		<% if User.current.admin? %>
 			<li><%= active_link_to l(:redmine_gestao_mp_config_plural), project_redmine_gestao_mp_config_index_path(@project, tab: 'issue'), class: 'settings', active: [['redmine_gestao_mp_config'], []], wrap_tag: :li %></li>	
 		<% end %>	
 	</ul>

@@ -3,3 +3,7 @@
 #admin-menu ul li.active a {
 	font-weight: bold;
 }
+
+.redmine-gestao-mp-align-left {
+	text-align: left !important;
+}

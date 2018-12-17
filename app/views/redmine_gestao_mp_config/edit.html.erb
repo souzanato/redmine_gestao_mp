@@ -1,1 +1,9 @@
-<h2>RedmineGestaoMpConfigController#edit</h2>
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<h2><%=l(:redmine_gestao_mp_label_config_edit)%></h2>
+
+<%= render 'form' %>

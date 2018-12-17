@@ -16,6 +16,8 @@ pt-BR:
   # General
   redmine_gestao_mp: "Gestão MP"
   redmine_gestao_mp_youre_ready_to_start: "Você está pronto para começar!"
+  redmine_gestao_mp_label_actions: "Ações"
+  redmine_gestao_mp_label_edit: "Editar"
 
   # sidebar
   redmine_gestao_mp_menu: "Menu Gestão MP"
@@ -39,3 +41,7 @@ pt-BR:
   redmine_gestao_mp_label_config_description: "Descrição"
   redmine_gestao_mp_load_redmine_gestao_mp_configs: "Carrege as configurações iniciais"
   redmine_gestao_mp_to_start: "para começar"
+  redmine_gestao_mp_label_config_edit: "Editar Configuração"
+  field_display_name: "Nome"
+  redmine_gestao_mp_config_successfully_updated: "Configuração atualizada com suceso"
+  redmine_gestao_mp_config_unsuccessfully_updated: "Houve um erro na edição da configuração"

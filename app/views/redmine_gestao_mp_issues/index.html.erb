@@ -6,7 +6,7 @@
 
 <h2><%=l(:redmine_gestao_mp_label_issues)%></h2>
 
-<table id="redmine-gestao-mp-issues-table" data-issues="<%=@project_hierarchy%>" data-project-id="<%= @project.identifier %>">
+<table id="redmine-gestao-mp-issues-table" data-issues="<%=@project_hierarchy%>" data-project-id="<%= @project.identifier %>" data-authenticity-token="<%= form_authenticity_token %>">
 	<colgroup>
 		<col width="3%"></col>
 		<col width="57%"></col>

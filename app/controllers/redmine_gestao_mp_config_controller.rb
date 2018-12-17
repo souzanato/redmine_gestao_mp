@@ -3,18 +3,17 @@ class RedmineGestaoMpConfigController < ApplicationController
   include ApplicationHelper
   menu_item :redmine_gestao_mp
   before_filter :find_project, :authorize
+  before_filter :set_redmine_gestao_mp_config, only: [:show, :edit, :update, :destroy]
 
   def index
+    @redmine_gestao_mp_configs = RedmineGestaoMpConfig.where(project_id: @project.id)
   end
-
 
   def show
   end
 
-
   def new
   end
-
 
   def create
     if params[:load_config].present?  
@@ -28,11 +27,20 @@ class RedmineGestaoMpConfigController < ApplicationController
   end
 
 
-  def edit
+  def edit    
   end
 
 
   def update
+    respond_to do |format|
+      if @redmine_gestao_mp_config.update_attributes(params[:redmine_gestao_mp_config])
+        flash[:notice] = t('redmine_gestao_mp_config_successfully_updated')
+        format.html {redirect_to project_redmine_gestao_mp_config_index_path(@project, tab: params[:tab])}
+      else
+        flash[:notice] = t('redmine_gestao_mp_config_unsuccessfully_updated')      
+        format.html { render :edit }
+      end
+    end
   end
 
 
@@ -41,6 +49,10 @@ class RedmineGestaoMpConfigController < ApplicationController
 
 
   private
+
+  def set_redmine_gestao_mp_config
+    @redmine_gestao_mp_config = RedmineGestaoMpConfig.find(params[:id])
+  end
 
   def find_project
     # @project variable must be set before calling the authorize filter

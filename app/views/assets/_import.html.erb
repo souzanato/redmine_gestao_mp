@@ -1,14 +1,21 @@
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'jquery-ui/jquery-ui.min.css', :plugin => 'redmine_gestao_mp' %>
     <%= stylesheet_link_tag 'fancytree/skin-win8/ui.fancytree.css', :plugin => 'redmine_gestao_mp' %>
+    <%= stylesheet_link_tag 'show-hide-text/dist/css/show-hide-text.css', :plugin => 'redmine_gestao_mp' %>
     <%= stylesheet_link_tag 'redmine_gestao_mp_issues.css', :plugin => 'redmine_gestao_mp' %>
-    <%= stylesheet_link_tag 'application.css', :plugin => 'redmine_gestao_mp' %>
+    <%= stylesheet_link_tag 'redmine_gestao_mp_config.css', :plugin => 'redmine_gestao_mp' %>
+    <%= stylesheet_link_tag 'font-awesome/4.0/css/font-awesome.min.css', :plugin => 'redmine_gestao_mp' %>    
     <%= stylesheet_link_tag 'font-awesome/4.0/css/font-awesome.min.css', :plugin => 'redmine_gestao_mp' %>
+    <%= stylesheet_link_tag 'application.css', :plugin => 'redmine_gestao_mp' %>
 
     <%= javascript_include_tag('application.js', :plugin => 'redmine_gestao_mp') %>
     <%= javascript_include_tag('jquery-ui/jquery-ui.min.js', :plugin => 'redmine_gestao_mp') %>
     <%= javascript_include_tag('fancytree/jquery.fancytree-all.js', :plugin => 'redmine_gestao_mp') %>
     <%= javascript_include_tag('fancytree/modules/jquery.fancytree.persist.js', :plugin => 'redmine_gestao_mp') %>
     <%= javascript_include_tag('fancytree/modules/jquery.fancytree.table.js', :plugin => 'redmine_gestao_mp') %>
+    <%= javascript_include_tag('show-hide-text/dist/js/show-hide-text.min.js', :plugin => 'redmine_gestao_mp') %>
     <%= javascript_include_tag('redmine_gestao_mp_issues.js', :plugin => 'redmine_gestao_mp') %>
+    <%= javascript_include_tag('redmine_gestao_mp_config.js', :plugin => 'redmine_gestao_mp') %>
 <% end %>
+
+<% html_title(t('project_module_redmine_gestao_mp')) -%>

@@ -14,14 +14,14 @@ module RedmineGestaoMp
         def redmine_gestao_mp_config_loaded?
           configs = ['green_light']
           configs.each do |config|
-            return false unless RedmineGestaoMpConfig.find_by_name(config)
+            return false unless RedmineGestaoMpConfig.find_by_name_and_project_id(config, Project.find_by_identifier(params[:project_id]).id)
           end
 
           true
         end
 
         def load_redmine_gestao_mp_config
-          RedmineGestaoMpConfig.create(name: 'green_light', display_name: 'Sinal Verde', description: 'Tarefas em dia ficam com o sinal verde. O valor desta configuração representa a distancia máxima em dias para que a tarefa perca este sinal.', scope: 'Issue', value: '5')  
+          RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'green_light', display_name: 'Sinal Verde', description: 'Se a distancia entre a data atual e o prazo de entrega for maior ou igual (em dias) ao valor estabelecido na configuração, a tarefa ou projeto está com sinal verde.', scope: 'Issue', value: '5')  
         end
 
 

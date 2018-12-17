@@ -1,0 +1,9 @@
+<%= labelled_form_for [@project, @redmine_gestao_mp_config] do |f| %>
+	<%= hidden_field_tag :tab, params[:tab] %>
+	<div class="box tabular settings">
+		<p><%= f.text_field :display_name, required: true, size: 60 %></p>
+		<p><%= f.text_field :value, required: true, size: 60 %></p>
+		<p><%= f.text_area :description, :rows => 8, :class => 'wiki-edit' %></p>
+	</div>
+	<%= submit_tag l(:button_save) %>
+<% end %>

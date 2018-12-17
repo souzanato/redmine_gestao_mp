@@ -1,20 +1,22 @@
 $(document).ready(function() {
 	if (assetsAuthorized('redmine_gestao_mp_issues', 'index')) {
-
 		$("#redmine-gestao-mp-issues-table").fancytree({
 			extensions: ["table", "persist"],
 			table: {
-				indentation: 20,      // indent 20px per node level
-				nodeColumnIdx: 1     // render the node title into the 2nd column
+				indentation: 20,
+				nodeColumnIdx: 1
 			},
 			source: $('#redmine-gestao-mp-issues-table').data('issues'),
 			renderColumns: function(event, data) {
 				var node = data.node, $tdList = $(node.tr).find(">td");
-				
+				var key = node.key;
+
 				$tdList.eq(0).html("<span class='redmine-gestao-mp-light " + node.data.light + "-light'></span>");
+				$tdList.eq(2).attr('id', key);
 				$tdList.eq(2).text(node.data.start_date);
-				$tdList.eq(3).text(node.data.due_date);
+				$tdList.eq(3).text(node.data.due_date);					
 				$tdList.eq(4).text(node.data.assigned_to);
+
 			},
       persist: {
       	cookiePrefix: "fancytree-redmine-gestao-mp-" + $('#redmine-gestao-mp-issues-table').data('project-id') + "-project",
@@ -38,7 +40,6 @@ $(document).ready(function() {
           backgroundImage: "url(" + icon + ")",
           backgroundPosition: "0 0"
         });
-
 			}
 		});
 

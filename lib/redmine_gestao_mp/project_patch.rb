@@ -37,7 +37,7 @@ module RedmineGestaoMp
 
           if self.parent_and_children.count == 1
             pandc = self.parent_and_children[0]
-            target_array << {key: "P#{pandc.id}", light: pandc.light, start_date: pandc.start_date.nil? ? 'Sem Registro' : I18n.l(pandc.start_date), due_date: pandc.due_date.nil? ? 'Sem registro' : I18n.l(pandc.due_date), title: "<a target='_blank' href='/projects/#{pandc[:identifier]}'>#{pandc[:name]}</a>", expanded: false, folder: true, class_type: 'Project', assigned_to: "", children: build_issue_hierarchy([], nil, pandc)}
+            target_array << {key: "P#{pandc.id}", disabled: true, light: pandc.light, start_date: pandc.start_date.nil? ? 'Sem Registro' : I18n.l(pandc.start_date), due_date: pandc.due_date.nil? ? 'Sem registro' : I18n.l(pandc.due_date), title: "<a target='_blank' href='/projects/#{pandc[:identifier]}' alt='#{pandc[:name]}' title='#{pandc[:name]}'>#{pandc[:name][0..50].gsub(/\s\w+$/,'...')}</a>", expanded: false, folder: true, class_type: 'Project', assigned_to: "", children: build_issue_hierarchy([], nil, pandc)}
           end
 
           target_array
@@ -45,7 +45,7 @@ module RedmineGestaoMp
 
         def build_issue_hierarchy(target_array = [], issue_id = nil, project = self)
           sort_target_array(project.parent_and_children_issues).select { |h| (h[:parent_id] == issue_id) }.each do |issue|
-            target_array << {key: "I#{issue.id}", light: issue.light, start_date: issue.start_date.nil? ? 'Sem Registro' : I18n.l(issue.start_date), due_date: issue.due_date.nil? ? 'Sem registro' : I18n.l(issue.due_date), title: "<a target='_blank' href='/issues/#{issue.id}'>#{issue.subject}</a>", expanded: false, folder: issue.children.any?, assigned_to: issue.assigned_to.try(:name).nil? ? "" : issue.assigned_to.try(:name), class_type: 'Issue', children: build_issue_hierarchy([], issue.id)}
+            target_array << {key: "I#{issue.id}", disabled: !issue.leaf?, light: issue.light, start_date: issue.start_date.nil? ? 'Sem Registro' : I18n.l(issue.start_date), due_date: issue.due_date.nil? ? 'Sem registro' : I18n.l(issue.due_date), title: "<a target='_blank' href='/issues/#{issue.id}' alt='#{issue.subject}' title='#{issue.subject}'>#{issue.subject[0..50].gsub(/\s\w+$/,'...')}</a>", expanded: false, folder: issue.children.any?, assigned_to: issue.assigned_to.try(:name).nil? ? "" : issue.assigned_to.try(:name), class_type: 'Issue', children: build_issue_hierarchy([], issue.id)}
           end
           target_array
         end
@@ -53,14 +53,13 @@ module RedmineGestaoMp
         def light
           return :neutral if self.due_date.nil? or self.due_date.blank?
 
-          green_light_val = RedmineGestaoMpConfig.find_by_name('green_light').value.to_i
+          green_light_val = RedmineGestaoMpConfig.find_by_name_and_project_id('green_light', self.id).value.to_i
           days_left = (self.due_date - Date.today).to_i
 
-          return :green if days_left >= green_light_val
+          return :green if days_left >= green_light_val or !self.overdue?
           return :warning if days_left < green_light_val and days_left > 0
           return :danger
-        end
-    
+        end  
 
       end
     end

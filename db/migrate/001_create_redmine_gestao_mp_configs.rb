@@ -7,9 +7,11 @@ class CreateRedmineGestaoMpConfigs < ActiveRecord::Migration
       t.string :scope
       t.string :value
       t.text :description
+      t.belongs_to :project
 
       t.timestamps
     end
 
+    add_index :redmine_gestao_mp_configs, :project_id
   end
 end
