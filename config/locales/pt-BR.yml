@@ -24,6 +24,7 @@ pt-BR:
   redmine_gestao_mp_label_home: "Início"
   redmine_gestao_mp_label_issue_plural: "Tarefas"
   redmine_gestao_mp_config_plural: "Configurações"
+  redmine_gestao_mp_project_light: "Sinaleiro"
 
   # issues
   redmine_gestao_mp_label_issues: "Tarefas"
@@ -45,3 +46,4 @@ pt-BR:
   field_display_name: "Nome"
   redmine_gestao_mp_config_successfully_updated: "Configuração atualizada com suceso"
   redmine_gestao_mp_config_unsuccessfully_updated: "Houve um erro na edição da configuração"
+  redmine_gestao_mp_config_project_plural: "Projetos"

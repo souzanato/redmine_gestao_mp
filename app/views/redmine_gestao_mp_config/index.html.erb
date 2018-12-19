@@ -9,7 +9,11 @@
 <div class="tabs">
   <ul>
     <li>
-			<%= link_to t(:redmine_gestao_mp_label_issue_plural), { :tab => 'issue' }, :id => "tab-issue", :class => ('issue' != params[:tab] ? nil : 'selected'), :onclick => "showTab('issue', this.href); this.blur(); return false;" %>		
+      <%= link_to t(:redmine_gestao_mp_label_issue_plural), { :tab => 'issue' }, :id => "tab-issue", :class => ('issue' != params[:tab] ? nil : 'selected'), :onclick => "showTab('issue', this.href); this.blur(); return false;" %>   
+    </li>
+    <li>
+      <%= link_to t(:redmine_gestao_mp_config_project_plural), { :tab => 'project' }, :id => "tab-project", :class => ('project' != params[:tab] ? nil : 'selected'), :onclick => "showTab('project', this.href); this.blur(); return false;" %>    
+
     </li>
   </ul>
   
@@ -26,5 +30,9 @@
 
 <div class="tab-content" id="tab-content-issue" style="<%= 'issue' != params[:tab] ? 'display:none' : nil %>">
   <%= render partial: 'issues' %>
+</div>
+
+<div class="tab-content" id="tab-content-project" style="<%= 'project' != params[:tab] ? 'display:none' : nil %>">
+  <%= render partial: 'projects' %>
 </div>
 

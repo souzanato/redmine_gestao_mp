@@ -1,4 +1,5 @@
 .redmine-gestao-mp-home-icon { background-image: url(/plugin_assets/redmine_gestao_mp/images/redmine-gestao-mp-home-icon.png); }
+.redmine-gestao-mp-traffic-light-icon { background-image: url(/plugin_assets/redmine_gestao_mp/images/redmine-gestao-mp-traffic-light-icon.png); }
 
 #admin-menu ul li.active a {
 	font-weight: bold;
