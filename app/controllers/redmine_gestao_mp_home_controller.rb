@@ -6,7 +6,11 @@ class RedmineGestaoMpHomeController < ApplicationController
 
   def index
     unless can?(:create, :redmine_gestao_mp_config)
-      flash[:warning] = t('redmine_gestao_mp_request_load_redmine_gestao_mp_configs') unless redmine_gestao_mp_config_loaded?
+      flash[:warning] = t('redmine_gestao_mp_request_load_redmine_gestao_mp_configs') unless redmine_gestao_mp_config_loaded?      
+    end
+
+    if can?(:create, :redmine_gestao_mp_config)
+      flash[:warning] = "#{(view_context.link_to t('redmine_gestao_mp_load_redmine_gestao_mp_configs'), project_redmine_gestao_mp_config_index_path(@project.identifier, load_config: true), method: :post)}  #{t('redmine_gestao_mp_to_start')}" unless redmine_gestao_mp_config_loaded?      
     end
   end
 
