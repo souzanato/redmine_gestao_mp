@@ -10,3 +10,8 @@ Desenvolvido por Renato de Souza na DESIS/SGGPP/SGP/MP.
 #### Instalação
 Vide wiki
 
+#### Contribua
+- Relate defeitos
+- Envie sugestões
+- Faça um fork 
+- Envie pull requests
