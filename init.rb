@@ -24,7 +24,7 @@ Redmine::Plugin.register :redmine_gestao_mp do
 
   project_module :redmine_gestao_mp do
     ### Pagina inicial ###
-    permission :redmine_gestao_mp_view_home, {redmine_gestao_mp_home: [:index] }, :public => true
+    permission :redmine_gestao_mp_view_home, {redmine_gestao_mp_home: [:index] }
     
     ### Tarefas ###
     permission :redmine_gestao_mp_view_issues, {redmine_gestao_mp_issues: [:index]}
@@ -37,7 +37,7 @@ Redmine::Plugin.register :redmine_gestao_mp do
     # Editar #
     permission :redmine_gestao_mp_edit_config, {redmine_gestao_mp_config: [:edit, :update]}
     # Destruir #
-    permission :redmine_gestao_mp_destroy_config, {redmine_gestao_mp_config: [:destroy]}   
+    # permission :redmine_gestao_mp_destroy_config, {redmine_gestao_mp_config: [:destroy]}   
   end
 
 end

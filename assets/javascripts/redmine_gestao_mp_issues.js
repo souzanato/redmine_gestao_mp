@@ -11,7 +11,7 @@ $(document).ready(function() {
 				var node = data.node, $tdList = $(node.tr).find(">td");
 				var key = node.key;
 
-				$tdList.eq(0).html("<span class='redmine-gestao-mp-light " + node.data.light + "-light'></span>");
+				$tdList.eq(0).html("<span rel='" +  node.data.light_title + "' title='" +  node.data.light_title + "' class='redmine-gestao-mp-light " + node.data.light + "-light'></span>");
 				$tdList.eq(2).attr('id', key);
 				$tdList.eq(2).text(node.data.start_date);
 				$tdList.eq(3).text(node.data.due_date);					

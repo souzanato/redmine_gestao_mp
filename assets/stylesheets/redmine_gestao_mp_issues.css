@@ -17,15 +17,15 @@ table#redmine-gestao-mp-issues-table thead tr th {
 	background-color: #34a853;
 }
 
-.redmine-gestao-mp-light.warning-light {
+.redmine-gestao-mp-light.yellow-light {
 	background-color: #fbbc05;
 }
 
-.redmine-gestao-mp-light.danger-light {
+.redmine-gestao-mp-light.red-light {
 	background-color: #ea4335;
 }
 
-.redmine-gestao-mp-light.neutral-light {
+.redmine-gestao-mp-light.gray-light {
 	background-color: #7b7b7b;
 }
 
