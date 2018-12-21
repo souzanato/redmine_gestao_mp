@@ -13,9 +13,9 @@ Issue.send(:include, RedmineGestaoMp::IssuePatch)
 User.send(:include, RedmineGestaoMp::UserPatch)
 
 Redmine::Plugin.register :redmine_gestao_mp do
-  name 'Plugin de Suporte à Gestão de Projetos do Ministério do Planejamento'
+  name 'Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento'
   author 'Renato de Souza'
-  description 'Esse é um plugin redmine que conta com algumas funcionalidades de gestão adaptadas para a realidade do Ministério do Planejamento'
+  description 'Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento'
   version '0.0.1'
   url 'https://github.com/souzanato/redmine_gestao_mp'
   author_url 'https://www.linkedin.com/in/renatocdesouza/'
