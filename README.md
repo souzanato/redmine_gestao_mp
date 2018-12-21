@@ -1,4 +1,4 @@
-== Gestão MP
+## Gestão MP
 <b>Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento</b>
 
 
