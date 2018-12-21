@@ -22,5 +22,5 @@ bundle install && RAILS_ENV=<development|production> rake redmine:plugins:redmin
 - Sinaleiro de Atividades
 - Configurações
 
-#### Desenvovimento
+#### Sobre
 Desenvolvido por Renato de Souza na DESIS/SGGPP/SGP/MP.
