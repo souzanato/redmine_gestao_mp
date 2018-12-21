@@ -3,7 +3,7 @@
 
 Esse é um plugin redmine que conta com algumas funcionalidades de gestão adaptadas para a realidade do Ministério do Planejamento.
 
-<b>Instalação</b>
+#### Instalação
 ```sh
 # Na pasta raiz do redmine
 cd plugins
@@ -17,12 +17,10 @@ bundle install && RAILS_ENV=<development|production> rake redmine:plugins:redmin
 # Reiniciar o servidor WEB
 ```
 
-<b>Notas da versão 0.0.1</b>
-
+#### Notas da versão 0.0.1
 - Página de Boas Vindas
 - Sinaleiro de Atividades
 - Configurações
 
-<b>Desenvovimento</b>
-
+#### Desenvovimento
 Desenvolvido por Renato de Souza na DESIS/SGGPP/SGP/MP.
