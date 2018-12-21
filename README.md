@@ -8,7 +8,7 @@ A versão 0.0.1 conta com a Página de Boas Vindas, o Sinaleiro de Atividades e 
 Testado na versão 2.6.10
 
 #### Sobre
-Desenvolvido por Renato de Souza na DESIS/SGGPP/SGP/MP.
+Desenvolvido na DESIS/SGGPP/SGP/MP.
 
 #### Instalação
 Vide wiki
