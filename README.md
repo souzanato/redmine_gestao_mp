@@ -4,6 +4,9 @@ Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejament
 #### Notas da versão 0.0.1
 A versão 0.0.1 conta com a Página de Boas Vindas, o Sinaleiro de Atividades e configurações do plugin.
 
+#### Versões Redmine
+Testado na versão 2.6.10
+
 #### Sobre
 Desenvolvido por Renato de Souza na DESIS/SGGPP/SGP/MP.
 
