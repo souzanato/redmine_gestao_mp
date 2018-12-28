@@ -1,0 +1,58 @@
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<% if can?(:create, :redmine_gestao_mp_risks) %>
+	<div class="contextual">
+		<%= link_to t('redmine_gestao_mp_label_risk_create'), new_project_redmine_gestao_mp_risk_path(@project), class: 'icon redmine-gestao-mp-create-risk-icon' %>
+	</div>
+<% end %>
+
+<h2><%=l(:redmine_gestao_mp_label_risk_plural)%></h2>
+
+<% unless @redmine_gestao_mp_risks.any? %>
+	<p class="nodata">
+		<%= t('redmine_gestao_mp_risks_no_risks_found') %>
+	</p>
+<% else %>
+
+<div class="tabs">
+  <ul>
+  	<% @risks_by_type.keys.each do |risk_type| %>
+	    <li>
+	      <%= link_to risk_type.title.pluralize, { :tab => risk_type.code }, :id => "tab-#{risk_type.code}", :class => (risk_type.code != params[:tab] ? nil : 'selected'), :onclick => "showTab('#{risk_type.code}', this.href); this.blur(); return false;" %>   
+	    </li>
+    <% end %>
+  </ul>
+  
+  <div class="tabs-buttons" style="display:none;">
+    <button class="tab-left" type="button" onclick="moveTabLeft(this);"></button>
+    <button class="tab-right" type="button" onclick="moveTabRight(this);"></button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+  	if($.getUrlVar("tab") == null) {
+  		showTab('<%=@risks_by_type.keys.first.code%>')
+  	}
+  });
+</script>
+
+<% @risks_by_type.keys.each do |risk_type| %>
+	<div class="tab-content" id="tab-content-<%=risk_type.code%>" style="<%= risk_type.code != params[:tab] ? 'display:none' : nil %>">
+	  <% unless @risks_by_type[risk_type].any? %>
+	  	<p class="nodata">
+				<%= t('redmine_gestao_mp_risks_no_risks_found') %>
+			</p>
+	  <% else %>
+	  	<%= render partial: 'risk_table', locals: {risks: @risks_by_type[risk_type]} %>
+	  <% end %>
+	</div>
+<% end %>
+
+
+
+<% end %>

@@ -1,12 +1,31 @@
 $(document).ready(function() {
 	if (assetsAuthorized('redmine_gestao_mp_issues', 'index')) {
+		var projectIdentification = location.pathname.split('/')[2];
 		$("#redmine-gestao-mp-issues-table").fancytree({
 			extensions: ["table", "persist"],
 			table: {
 				indentation: 20,
 				nodeColumnIdx: 1
 			},
-			source: $('#redmine-gestao-mp-issues-table').data('issues'),
+			// source: $('#redmine-gestao-mp-issues-table').data('issues'),
+			source: {
+				url: `${location.pathname}`,
+				data: {
+					jason_hierarchy: true
+				},
+				complete: function() {
+					$('#ajax-indicator').hide();
+				},
+				error: function() {
+					$('#ajax-indicator').hide();
+				}
+			},
+			strings: {
+				loading: "", // &#8230; would be escaped when escapeTitles is true
+				loadError: "Erro no carregamento!",
+				moreData: "Mais...",
+				noData: "Sem registro.",
+			},
 			renderColumns: function(event, data) {
 				var node = data.node, $tdList = $(node.tr).find(">td");
 				var key = node.key;
@@ -30,11 +49,11 @@ $(document).ready(function() {
         //   set: function(key, value){ this.info("set(" + key + ", " + value + ")"); window.sessionStorage.setItem(key, value); },
         //   remove: function(key){ this.info("remove(" + key + ")"); window.sessionStorage.removeItem(key); }
         // }
-      },
+      },      
 			renderNode: function(event, data) {
 				var node = data.node;
         var $span = $(node.span);
-        var icon = node.data.class_type == 'Project' ? '/images/projects.png' : '/images/ticket.png'
+        var icon = node.data.class_type == 'Project' ? '/images/projects.png' : '/images/ticket.png';
 
         $span.find("> span.fancytree-icon").css({
           backgroundImage: "url(" + icon + ")",

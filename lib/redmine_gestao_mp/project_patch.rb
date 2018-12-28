@@ -94,7 +94,7 @@ module RedmineGestaoMp
         end  
 
         def resolve_light
-          if self.due_date.nil? or self.due_date.blank?
+          if self.due_date.nil? or self.due_date.blank? or !self.active?
             neutral_light =  RedmineGestaoMpConfig.where(
               name: 'gray_light', 
               project_id: self.project.hierarchy.map{|p| p.id}, 
@@ -109,7 +109,13 @@ module RedmineGestaoMp
             name: 'green_light', 
             project_id: self.hierarchy.map{|p| p.id}, 
             scope: 'Project')[0]
-          return {color: :green, title: "#{green_light.display_name} - #{green_light.description}"} if !self.overdue?
+          return {color: :green, title: "#{green_light.display_name} - #{green_light.description}"} if days_left >= green_light.value.to_i
+
+          yellow_light = RedmineGestaoMpConfig.where(
+            name: 'yellow_light', 
+            project_id: self.project.hierarchy.map{|p| p.id}, 
+            scope: 'Issue')[0]
+          return {color: :yellow, title: "#{yellow_light.display_name} - #{yellow_light.description}", description: yellow_light.description} if days_left < green_light.value.to_i and days_left > 0
 
           red_light = RedmineGestaoMpConfig.where(
             name: 'red_light', 

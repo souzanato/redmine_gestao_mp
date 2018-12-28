@@ -34,9 +34,9 @@ module RedmineGestaoMp
           RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'red_light', display_name: 'Sinal Vermelho', description: 'Tarefas em andamento e atrasadas', scope: 'Issue', value: 'Não se Aplica')  
           RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'gray_light', display_name: 'Sinal Cinza', description: 'Tarefas com data de início e/ou data prevista em branco', scope: 'Issue', value: 'Não se Aplica')  
 
-          RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'green_light', display_name: 'Sinal Verde', description: 'Projetos ativos com 5 ou mais dias da data prevista', scope: 'Project', value: 'Não se Aplica')  
+          RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'green_light', display_name: 'Sinal Verde', description: 'Projetos ativos com 5 ou mais dias da data prevista', scope: 'Project', value: '5')  
           RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'red_light', display_name: 'Sinal Vermelho', description: 'Projetos inativos e/ou atrasados.', scope: 'Project', value: 'Não se Aplica')  
-          RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'gray_light', display_name: 'Sinal Cinza', description: 'Projetos com data de início e/ou data prevista em branco', scope: 'Project', value: 'Não se Aplica')  
+          RedmineGestaoMpConfig.create(project_id: Project.find_by_identifier(params[:project_id]).id, name: 'gray_light', display_name: 'Sinal Cinza', description: 'Projetos com data de início e/ou data prevista em branco ou inativos', scope: 'Project', value: 'Não se Aplica')  
         end
 
 

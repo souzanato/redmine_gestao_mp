@@ -14,6 +14,12 @@ pt-BR:
   permission_redmine_gestao_mp_create_config: "Criar configurações"
   permission_redmine_gestao_mp_edit_config: "Editar configurações"
   permission_redmine_gestao_mp_destroy_config: "Destruir configurações"
+
+  # riscos #
+  permission_redmine_gestao_mp_view_risks: "Ver riscos"
+  permission_redmine_gestao_mp_create_risks: "Relatar riscos"
+  permission_redmine_gestao_mp_edit_risks: "Editar riscos"
+  permission_redmine_gestao_mp_destroy_risks: "Destruir riscos"
   ### Fim Permissões ###
 
   # General
@@ -22,6 +28,7 @@ pt-BR:
   redmine_gestao_mp_label_actions: "Ações"
   redmine_gestao_mp_label_edit: "Editar"
   redmine_gestao_mp_no_data_found: "Sem Registro"
+  redmine_gestao_mp_select_prompt: "Por favor, selecione"
 
   # sidebar
   redmine_gestao_mp_menu: "Menu Gestão MP"
@@ -52,3 +59,15 @@ pt-BR:
   redmine_gestao_mp_config_unsuccessfully_updated: "Houve um erro na edição da configuração"
   redmine_gestao_mp_config_project_plural: "Projetos"
   redmine_gestao_mp_request_load_redmine_gestao_mp_configs: "Solicite ao gerente a criação das configurações inicais."
+
+  # Riscos
+  redmine_gestao_mp_label_risk: "Risco"
+  redmine_gestao_mp_label_risk_plural: "Riscos"
+  redmine_gestao_mp_label_risk_create: "Relatar Risco"
+  redmine_gestao_mp_risks_no_risks_found: "Nenhum risco relatado para este projeto"
+  redmine_gestao_mp_risks_select_risk_type_prompt: "Por favor, selecione o tipo de risco"
+  field_redmine_gestao_mp_risk_type: "Tipo de Risco"
+  field_redmine_gestao_mp_risk_probability: "Probabilidade"
+  field_redmine_gestao_mp_risk_impact: "Impacto"
+  field_redmine_gestao_mp_risk_strategy: "Contramedida"
+  redmine_gestao_mp_label_risk_show: "Detalhes do Risco"

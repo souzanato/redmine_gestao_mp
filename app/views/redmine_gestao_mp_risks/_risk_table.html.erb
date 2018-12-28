@@ -1,0 +1,22 @@
+<table class="list redmine-gestao-mp-risks-table">
+  <thead>
+    <tr>
+      <th><%= t('field_title') %></th>
+      <th><%= t('field_redmine_gestao_mp_risk_probability') %></th>
+      <th><%= t('field_redmine_gestao_mp_risk_impact') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% risks.each do |risk| %>
+  		<tr>
+  			<td><%= risk.title %></td>
+  			<td> <%= risk.redmine_gestao_mp_risk_probability.display_title %> </td>
+        <td>
+          <%= risk.redmine_gestao_mp_risk_impact.display_title %>
+        </td>
+        <td></td>
+  		</tr>
+  	<% end %>
+  </tbody>
+</table>

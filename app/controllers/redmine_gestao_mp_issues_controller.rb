@@ -4,7 +4,11 @@ class RedmineGestaoMpIssuesController < ApplicationController
   before_filter :find_project, :authorize, :only => :index
 
   def index
-    @project_hierarchy = @project.build_project_hierarchy.to_json
+    if params[:jason_hierarchy].present?
+      respond_to do |format|
+        format.json {render json: @project.build_project_hierarchy.to_json}
+      end      
+    end    
   end
 
   private

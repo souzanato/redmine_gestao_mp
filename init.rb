@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require 'redmine'
 require 'active_record/connection_adapters/mysql2_adapter'
+require_dependency 'redmine_gestao_mp/inflections'
 
 class ActiveRecord::ConnectionAdapters::Mysql2Adapter
   NATIVE_DATABASE_TYPES[:primary_key] = "int(11) auto_increment PRIMARY KEY"
@@ -38,6 +39,17 @@ Redmine::Plugin.register :redmine_gestao_mp do
     permission :redmine_gestao_mp_edit_config, {redmine_gestao_mp_config: [:edit, :update]}
     # Destruir #
     # permission :redmine_gestao_mp_destroy_config, {redmine_gestao_mp_config: [:destroy]}   
+
+
+    ### Riscos ###
+    # Ver #
+    permission :redmine_gestao_mp_view_risks, {redmine_gestao_mp_risks: [:index, :show]}
+    # Criar #
+    permission :redmine_gestao_mp_create_risks, {redmine_gestao_mp_risks: [:new, :create], redmine_gestao_mp_risk_strategies: [:index]}
+    # Editar #
+    permission :redmine_gestao_mp_edit_risks, {redmine_gestao_mp_risks: [:edit, :update], redmine_gestao_mp_risk_strategies: [:index]}
+    # Destruir #
+    permission :redmine_gestao_mp_destroy_risks, {redmine_gestao_mp_risks: [:destroy]}
   end
 
 end

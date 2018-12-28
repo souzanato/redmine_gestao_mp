@@ -25,7 +25,7 @@ module RedmineGestaoMp
             name: 'green_light', 
             project_id: self.project.hierarchy.map{|p| p.id}, 
             scope: 'Issue')[0]
-          return {color: :green, title: "#{green_light.display_name} - #{green_light.description}"} if days_left >= green_light.value.to_i or !self.overdue?          
+          return {color: :green, title: "#{green_light.display_name} - #{green_light.description}"} if days_left >= green_light.value.to_i or status.is_closed?      
 
           yellow_light = RedmineGestaoMpConfig.where(
             name: 'yellow_light', 

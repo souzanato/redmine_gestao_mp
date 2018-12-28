@@ -6,4 +6,6 @@ get '/projects/:project_id/gestao_mp/issues', :to => 'redmine_gestao_mp_issues#i
 
 resources :projects do
 	resources :redmine_gestao_mp_config, path: 'gestao_mp/configs'
+	resources :redmine_gestao_mp_risks, path: 'gestao_mp/risks'
+	resources :redmine_gestao_mp_risk_strategies, path: 'gestao_mp/risk_strategies'
 end

@@ -1,0 +1,32 @@
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<h2><%= "#{t('redmine_gestao_mp_label_risk')} ##{@redmine_gestao_mp_risk.id}"%></h2>
+
+<div class="issue details">
+	<table class="attributes">
+		<tbody>
+			<tr>
+				<th><%= t('field_title') %></th>
+				<td><%= @redmine_gestao_mp_risk.title %></td>
+				<th><%= t('field_redmine_gestao_mp_risk_type') %></th>
+				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_type.title %></td>
+			</tr>
+			<tr>
+				<th><%= t('field_redmine_gestao_mp_risk_probability') %></th>
+				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_probability.display_title %></td>
+				<th><%= t('field_redmine_gestao_mp_risk_impact') %></th>
+				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_impact.display_title %></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="description">
+		<p><strong><%= t('field_description') %></strong></p>
+		<div class="wiki">
+			<%= @redmine_gestao_mp_risk.description %>
+		</div>
+	</div>
+</div>

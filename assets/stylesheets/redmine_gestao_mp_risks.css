@@ -1,0 +1,5 @@
+.redmine-gestao-mp-create-risk-icon {background-image: url(/images/exclamation.png)}
+
+.redmine-gestao-mp-risks-table thead tr th, .redmine-gestao-mp-risks-table tbody tr td {
+	text-align: left;
+}

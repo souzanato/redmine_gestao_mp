@@ -1,0 +1,2 @@
+module RedmineGestaoMpRisksHelper
+end
