@@ -9,11 +9,12 @@ $(document).ready(function() {
 			},
 			// source: $('#redmine-gestao-mp-issues-table').data('issues'),
 			source: {
-				url: `${location.pathname}`,
+				url: location.pathname,
 				data: {
 					jason_hierarchy: true
 				},
-				complete: function() {
+				timeout : 60000,
+				complete: function(data) {
 					$('#ajax-indicator').hide();
 				},
 				error: function() {
