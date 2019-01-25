@@ -1,1 +1,8 @@
-<h2>RedmineGestaoMpRisksController#edit</h2>
+<%= render partial: 'assets/import' %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
+<% end %>
+
+<h2><%=l(:redmine_gestao_mp_label_risk_create)%></h2>
+<%= render 'form' %>

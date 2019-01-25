@@ -62,6 +62,7 @@ pt-BR:
 
   # Riscos
   redmine_gestao_mp_label_risk: "Risco"
+  redmine_gestao_mp_label_all_risks: "Todos os Riscos"
   redmine_gestao_mp_label_risk_plural: "Riscos"
   redmine_gestao_mp_label_risk_create: "Relatar Risco"
   redmine_gestao_mp_risks_no_risks_found: "Nenhum risco relatado para este projeto"
@@ -70,4 +71,5 @@ pt-BR:
   field_redmine_gestao_mp_risk_probability: "Probabilidade"
   field_redmine_gestao_mp_risk_impact: "Impacto"
   field_redmine_gestao_mp_risk_strategy: "Contramedida"
+  field_redmine_gestao_mp_risk_description: "Descrição"
   redmine_gestao_mp_label_risk_show: "Detalhes do Risco"

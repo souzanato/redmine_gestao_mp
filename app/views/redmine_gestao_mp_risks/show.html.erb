@@ -10,16 +10,10 @@
 	<table class="attributes">
 		<tbody>
 			<tr>
-				<th><%= t('field_title') %></th>
-				<td><%= @redmine_gestao_mp_risk.title %></td>
 				<th><%= t('field_redmine_gestao_mp_risk_type') %></th>
 				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_type.title %></td>
-			</tr>
-			<tr>
-				<th><%= t('field_redmine_gestao_mp_risk_probability') %></th>
-				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_probability.display_title %></td>
-				<th><%= t('field_redmine_gestao_mp_risk_impact') %></th>
-				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_impact.display_title %></td>
+				<th><%= t('field_title') %></th>
+				<td><%= @redmine_gestao_mp_risk.title %></td>
 			</tr>
 		</tbody>
 	</table>
@@ -30,3 +24,5 @@
 		</div>
 	</div>
 </div>
+
+<%= link_to l('button_back'), project_redmine_gestao_mp_risks_path(@project) %>

@@ -1,4 +1,16 @@
 $(document).ready(function() {
+	if (assetsAuthorized('redmine_gestao_mp_risks', 'index')) {
+
+		new showHideText('.redmine-gestao-mp-risk-desc-trim', {
+	    charQty     : 100,
+	    ellipseText : "...",
+	    moreText: 'Ver mais',
+	    lessText: 'Ver menos'
+		});
+
+
+	}
+	
 	if (assetsAuthorized('redmine_gestao_mp_risks', 'new') || assetsAuthorized('redmine_gestao_mp_risks', 'create') ) {
 		// var projectIdentification = location.pathname.split('/')[2];
 		// var strategyUrl = `/projects/${projectIdentification}/gestao_mp/risk_strategies`;

@@ -8,3 +8,5 @@
 .redmine-gestao-mp-align-left {
 	text-align: left !important;
 }
+
+.icon-search { background-image: url(/images/magnifier.png) }
