@@ -1,0 +1,43 @@
+<div class="issue details">	
+	<table class="attributes">
+		<tbody>
+			<tr>
+				<th><%= t('field_redmine_gestao_mp_risk_type') %></th>
+				<td><%= risk.redmine_gestao_mp_risk_type.title %></td>
+				<th><%= t('field_title') %></th>
+				<td><%= risk.title %></td>
+			</tr>
+			<tr>
+				<th><%= t('field_redmine_gestao_mp_risk_probability') %></th>
+				<td><%= risk.redmine_gestao_mp_risk_probability.title %></td>
+				<th><%= t('field_redmine_gestao_mp_risk_impact') %></th>
+				<td><%= risk.redmine_gestao_mp_risk_impact.title %></td>
+			</tr>
+			<tr>
+				<th><%= t('field_redmine_gestao_mp_risk_strategy') %></th>
+				<td><%= risk.redmine_gestao_mp_risk_strategy.title %></td>
+				<th><%= t('redmine_gestao_mp_label_critically') %></th>
+				<td>
+					<% criticality = risk.criticality %>
+					<%= redmine_gestao_mp_risk_criticality_light(criticality) %>					<%= criticality.display_name %>
+
+				</td>
+			</tr>
+			<tr>
+				<% issues = @redmine_gestao_mp_risk.issues %>
+				<th><%= t('field_issue').pluralize %></th>
+				<%= render partial: 'issues_table', locals: {issues: @redmine_gestao_mp_risk.issues} %>					
+		</tbody>
+	</table>
+
+
+
+	<div class="description">
+		<p><strong><%= t('field_description') %></strong></p>
+		<div class="wiki">
+			<%= risk.description %>
+		</div>
+	</div>
+
+
+</div>

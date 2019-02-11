@@ -10,6 +10,7 @@ class CreateRedmineGestaoMpRiskStrategies < ActiveRecord::Migration
 
       t.belongs_to :redmine_gestao_mp_risk_type
 
+	    t.boolean :treatable, default: true, null: false
     end
     add_index :redmine_gestao_mp_risk_strategies, :redmine_gestao_mp_risk_type_id, name: 'index_rm_gestao_mp_risk_strat_on_rm_gestao_mp_risk_type_id'
 

@@ -1,0 +1,50 @@
+<% if risks.any? %>  
+  <table class="list redmine-gestao-mp-risks-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= t('field_title') %></th>
+        <th><%= t('redmine_gestao_mp_label_critically') %></th>
+        <th><%= t('field_redmine_gestao_mp_risk_strategy') %></th>
+        <th><%= t('field_subproject') %></th>
+        <% if actions == true %>
+          <th></th>          
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+    	<% risks.each do |risk| %>
+        <% criticality = risk.criticality %>
+    		<tr data-issues="<%= RedmineGestaoMpRiskSetup.select('issue_statuses.is_closed, issues.done_ratio').joins(:redmine_gestao_mp_risk, issue: :status).where('redmine_gestao_mp_risks.id = ?', risk.id) %>">
+          <td><%= redmine_gestao_mp_risk_criticality_light(criticality) %></td>
+          <td>
+              <%= can?(:show, :redmine_gestao_mp_risks) ? 
+                (link_to risk.title, project_redmine_gestao_mp_risk_path(@project.identifier, risk.id)) :
+                risk.title
+              %>
+          </td>
+          <td><%= criticality.display_name %></td>
+          <td class='redmine-gestao-mp-risk-desc-trim'><%= risk.redmine_gestao_mp_risk_strategy.title %></td>
+          <td>
+            <%= redmine_gestao_mp_risk_project_display(risk, @project) %>
+          </td>
+          <% if actions == true %>
+          <td>
+
+
+            <% if can?(:destroy, :redmine_gestao_mp_risks) %>
+              <%= delete_link project_issue_redmine_gestao_mp_risk_setup_path(@project.identifier, @issue.id, RedmineGestaoMpRiskSetup.find_by_redmine_gestao_mp_risk_id_and_issue_id(risk.id, @issue.id)), remote: true %>
+            <% end %> 
+
+
+
+
+
+
+          </td>
+          <% end %>
+    		</tr>
+    	<% end %>
+    </tbody>
+  </table>
+<% end %>

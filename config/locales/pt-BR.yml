@@ -20,6 +20,12 @@ pt-BR:
   permission_redmine_gestao_mp_create_risks: "Relatar riscos"
   permission_redmine_gestao_mp_edit_risks: "Editar riscos"
   permission_redmine_gestao_mp_destroy_risks: "Destruir riscos"
+
+  # configuração de riscos #
+  permission_redmine_gestao_mp_view_risk_setups: "Ver configuração de riscos"
+  permission_redmine_gestao_mp_create_risk_setups: "Criar configuração de risco"
+  permission_redmine_gestao_mp_edit_risk_setups: "Editar configuração de risco"
+  permission_redmine_gestao_mp_destroy_risk_setups: "Destruir configuração de risco"
   ### Fim Permissões ###
 
   # General
@@ -45,6 +51,9 @@ pt-BR:
   redmine_gestao_mp_assigned_to: "Responsável"
 
   # config
+  redmine_gestao_mp_label_issues: "Tarefas"
+  redmine_gestao_mp_label_projects: "Projetos"
+  redmine_gestao_mp_label_redmine_gestao_mp_risks: "Riscos"
   redmine_gestao_mp_label_config_plural: "Configurações"
   redmine_gestao_mp_label_config_name: "Nome Técnico"
   redmine_gestao_mp_label_config_display_name: "Nome"
@@ -59,8 +68,13 @@ pt-BR:
   redmine_gestao_mp_config_unsuccessfully_updated: "Houve um erro na edição da configuração"
   redmine_gestao_mp_config_project_plural: "Projetos"
   redmine_gestao_mp_request_load_redmine_gestao_mp_configs: "Solicite ao gerente a criação das configurações inicais."
+  redmine_gestao_mp_message_project_configs_successfully_reseted: "Configurações do projeto resetadas com sucesso"
+  redmine_gestao_mp_button_reset_project_configs: "Redefinir configurações do projeto"
 
   # Riscos
+  redmine_gestao_mp_label_related_issues: "Tarefas Associadas"
+  redmine_gestao_mp_label_check_related_issues: "tarefa(s)"
+  redmine_gestao_mp_label_critically: "Criticidade"
   redmine_gestao_mp_label_risk: "Risco"
   redmine_gestao_mp_label_all_risks: "Todos os Riscos"
   redmine_gestao_mp_label_risk_plural: "Riscos"
@@ -73,3 +87,13 @@ pt-BR:
   field_redmine_gestao_mp_risk_strategy: "Contramedida"
   field_redmine_gestao_mp_risk_description: "Descrição"
   redmine_gestao_mp_label_risk_show: "Detalhes do Risco"
+  redmine_gestao_mp_label_risk_management: "Gerenciamento de Risco"
+  redmine_gestao_mp_risk_title_select_the_risk: "Selecione o risco que deseja associar a esta tarefa"
+  redmine_gestao_mp_risk_title_no_risk_found: "Nenhum risco disponível para este projeto"
+  redmine_gestao_mp_go_to_risk: "Ir para riscos"
+
+  # Configuração de Riscos
+  redmine_gestao_mp_add_risk_setup: "Configurar risco"
+  field_redmine_gestao_mp_risk: "Risco"
+  redmine_gestao_mp_risk_title_no_risk_available_for_this_issue: "Nenhum risco configurado para esta tarefa"
+  redmine_gestao_mp_risk_title_no_issue_for_this_risk: "Nenhuma tarefa associada a este risco"

@@ -1,0 +1,18 @@
+<% unless issues.any? %>
+	<td colspan="3">
+		<%= l(:redmine_gestao_mp_risk_title_no_issue_for_this_risk) %>		
+	</td>
+	</tr>		
+<% else %>
+  	<% issues.each_with_index do |issue, index| %>
+	  	<% if index == 0 %>
+				<td colspan="3"><%= link_to "#{issue.id} #{issue.subject}", issue_path(issue), target: '_blank' %></td>
+				</tr>
+			<% else %>
+				<tr>
+		  		<th></th>
+					<td colspan="3"><%= link_to "#{issue.id} #{issue.subject}", issue_path(issue), target: '_blank' %></td>
+				</tr>
+	  	<% end %>
+  	<% end %>
+<% end %>

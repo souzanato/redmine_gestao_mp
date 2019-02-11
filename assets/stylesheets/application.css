@@ -10,3 +10,7 @@
 }
 
 .icon-search { background-image: url(/images/magnifier.png) }
+
+th.center {
+	text-align: center !important;
+}

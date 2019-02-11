@@ -1,20 +1,31 @@
-<%= render partial: 'assets/import' %>
+<%= render partial: 'redmine_gestao_mp_assets/import' %>
 
 <% content_for :sidebar do %>
     <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
 <% end %>
 
+<% if can?(:create, :redmine_gestao_mp_config) %>
+  <div class="contextual">
+    <%= link_to t(:redmine_gestao_mp_button_reset_project_configs), 
+      project_redmine_gestao_mp_config_index_path(@project, reset: true), 
+      method: :post, 
+      :data => {:confirm => l(:text_are_you_sure)},
+      class: 'icon icon-warning' %>
+  </div>
+<% end %>
+
 <h2><%=l(:redmine_gestao_mp_label_config_plural)%></h2>
+
+
 
 <div class="tabs">
   <ul>
-    <li>
-      <%= link_to t(:redmine_gestao_mp_label_issue_plural), { :tab => 'issue' }, :id => "tab-issue", :class => ('issue' != params[:tab] ? nil : 'selected'), :onclick => "showTab('issue', this.href); this.blur(); return false;" %>   
-    </li>
-    <li>
-      <%= link_to t(:redmine_gestao_mp_config_project_plural), { :tab => 'project' }, :id => "tab-project", :class => ('project' != params[:tab] ? nil : 'selected'), :onclick => "showTab('project', this.href); this.blur(); return false;" %>    
+    <% @config_scopes.each do |scope| %>
+      <li>
+        <%= link_to l("redmine_gestao_mp_label_#{scope}"), { :tab => scope }, :id => "tab-#{scope}", :class => (scope != params[:tab] ? nil : 'selected'), :onclick => "showTab('#{scope}', this.href); this.blur(); return false;" %>   
+      </li>
 
-    </li>
+    <% end %>
   </ul>
   
   <div class="tabs-buttons" style="display:none;">
@@ -28,11 +39,8 @@
   $(window).resize(displayTabsButtons);
 </script>
 
-<div class="tab-content" id="tab-content-issue" style="<%= 'issue' != params[:tab] ? 'display:none' : nil %>">
-  <%= render partial: 'issues' %>
-</div>
-
-<div class="tab-content" id="tab-content-project" style="<%= 'project' != params[:tab] ? 'display:none' : nil %>">
-  <%= render partial: 'projects' %>
-</div>
-
+<% @config_scopes.each do |scope| %>
+  <div class="tab-content" id="tab-content-<%=scope%>" style="<%= scope != params[:tab] ? 'display:none' : nil %>">
+    <%= render partial: 'config_table', locals: {scope: scope, redmine_gestao_mp_configs: @redmine_gestao_mp_configs} %>
+  </div>
+<% end %>

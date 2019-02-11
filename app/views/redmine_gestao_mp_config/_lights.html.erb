@@ -1,0 +1,31 @@
+<table class="list redmine-gestao-mp-configs">
+  <thead>
+   <tr>
+      <th colspan="4">
+        <%= l(:redmine_gestao_mp_label_config_issues) %>
+      </th>
+    </tr>
+    <tr>
+      <th><%= t('redmine_gestao_mp_label_config_display_name') %></th>
+      <th><%= t('redmine_gestao_mp_label_config_value') %></th>
+      <th><%= t('redmine_gestao_mp_label_config_description') %></th>
+      <th><%= t('redmine_gestao_mp_label_actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @redmine_gestao_mp_configs.select{|config| config.scope == 'Issue'}.each do |config| %>
+  		<tr>
+  			<td><%= config.display_name %></td>
+  			<td> <%= config.value %> </td>
+  			<td class="redmine-gestao-mp-align-left">
+          <span class="redmine-gestao-mp-config-desc-trim">
+            <%= config.description %>  
+          </span>          
+        </td>
+        <td>
+          <%= link_to '', edit_project_redmine_gestao_mp_config_path(@project, config, tab: params[:tab]), class: 'icon icon-edit', alt: t('redmine_gestao_mp_label_edit'), title: t('redmine_gestao_mp_label_edit') %>
+        </td>
+  		</tr>
+  	<% end %>
+  </tbody>
+</table>

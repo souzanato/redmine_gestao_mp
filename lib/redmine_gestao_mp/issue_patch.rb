@@ -3,8 +3,11 @@ module RedmineGestaoMp
   module IssuePatch
     def self.included(base)
       base.class_eval do
-        def light
 
+        has_many :redmine_gestao_mp_risk_setups
+        has_many :redmine_gestao_mp_risks, through: :redmine_gestao_mp_risk_setups
+
+        def light
           resolved_light = resolve_light
           return {color: resolved_light[:color], title: resolved_light[:title]}
         end

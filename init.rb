@@ -2,6 +2,7 @@
 require 'redmine'
 require 'active_record/connection_adapters/mysql2_adapter'
 require_dependency 'redmine_gestao_mp/inflections'
+require_dependency 'redmine_gestao_mp/hooks'
 
 class ActiveRecord::ConnectionAdapters::Mysql2Adapter
   NATIVE_DATABASE_TYPES[:primary_key] = "int(11) auto_increment PRIMARY KEY"
@@ -28,7 +29,10 @@ Redmine::Plugin.register :redmine_gestao_mp do
     permission :redmine_gestao_mp_view_home, {redmine_gestao_mp_home: [:index] }
     
     ### Tarefas ###
-    permission :redmine_gestao_mp_view_issues, {redmine_gestao_mp_issues: [:index]}
+    permission :redmine_gestao_mp_view_issues, {
+      redmine_gestao_mp_issues: [:index],
+      redmine_gestao_mp_risk_issues: [:index]
+    }
     
     ### Configurações ###
     # Ver #
@@ -40,16 +44,25 @@ Redmine::Plugin.register :redmine_gestao_mp do
     # Destruir #
     # permission :redmine_gestao_mp_destroy_config, {redmine_gestao_mp_config: [:destroy]}   
 
-
     ### Riscos ###
     # Ver #
-    permission :redmine_gestao_mp_view_risks, {redmine_gestao_mp_risks: [:index, :show]}
+    # permission :redmine_gestao_mp_view_risks, {redmine_gestao_mp_risks: [:index, :show]}
     # Criar #
-    permission :redmine_gestao_mp_create_risks, {redmine_gestao_mp_risks: [:new, :create], redmine_gestao_mp_risk_strategies: [:index]}
+    # permission :redmine_gestao_mp_create_risks, {redmine_gestao_mp_risks: [:new, :create], redmine_gestao_mp_risk_strategies: [:index]}
     # Editar #
-    permission :redmine_gestao_mp_edit_risks, {redmine_gestao_mp_risks: [:edit, :update], redmine_gestao_mp_risk_strategies: [:index]}
+    # permission :redmine_gestao_mp_edit_risks, {redmine_gestao_mp_risks: [:edit, :update], redmine_gestao_mp_risk_strategies: [:index]}
     # Destruir #
-    permission :redmine_gestao_mp_destroy_risks, {redmine_gestao_mp_risks: [:destroy]}
+    # permission :redmine_gestao_mp_destroy_risks, {redmine_gestao_mp_risks: [:destroy]}
+
+    ### Configuração de Riscos ###
+    # Ver #
+    # permission :redmine_gestao_mp_view_risk_setups, {redmine_gestao_mp_risk_setups: [:index, :show]}
+    # Criar #
+    # permission :redmine_gestao_mp_create_risk_setups, {redmine_gestao_mp_risk_setups: [:new, :create], redmine_gestao_mp_risk_strategies: [:index]}
+    # Editar #
+    # permission :redmine_gestao_mp_edit_risk_setups, {redmine_gestao_mp_risk_setups: [:edit, :update], redmine_gestao_mp_risk_strategies: [:index]}
+    # Destruir #
+    # permission :redmine_gestao_mp_destroy_risk_setups, {redmine_gestao_mp_risk_setups: [:destroy]}
   end
 
 end

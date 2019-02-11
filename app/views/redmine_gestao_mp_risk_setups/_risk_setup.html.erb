@@ -1,0 +1,13 @@
+<% if @issue.redmine_gestao_mp_risks.any? %>
+<%= render partial: 'redmine_gestao_mp_assets/import' %>
+
+<span data-id="<%= @project.identifier %>" id='redmine-gestap-mp-project'></span>
+<hr>
+<p>
+	<strong><%= l(:redmine_gestao_mp_label_risk_management) %>	</strong>
+</p>
+
+<% if @issue.redmine_gestao_mp_risks.any? %>
+	<%= render partial: 'redmine_gestao_mp_risk_setups/risks_table', locals: {risks: @issue.redmine_gestao_mp_risks, actions: false} %>
+<% end %>
+<% end %>

@@ -7,6 +7,7 @@ class RedmineGestaoMpConfigController < ApplicationController
 
   def index
     @redmine_gestao_mp_configs = RedmineGestaoMpConfig.where(project_id: @project.id)
+    @config_scopes = RedmineGestaoMpConfig.all.uniq{|c| c.scope}.map{|s| s.scope.pluralize.underscore}
   end
 
   def show
@@ -23,6 +24,14 @@ class RedmineGestaoMpConfigController < ApplicationController
       respond_to do |format|
         format.html {redirect_to :back}
       end
+    elsif params[:reset].present?
+      @project.redmine_gestao_mp_configs.destroy_all
+      load_redmine_gestao_mp_config
+
+      flash[:notice] = t('redmine_gestao_mp_message_project_configs_successfully_reseted')
+      respond_to do |format|
+        format.html {redirect_to :back}
+      end      
     end
   end
 

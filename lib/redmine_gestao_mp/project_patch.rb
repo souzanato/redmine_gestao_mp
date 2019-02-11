@@ -4,6 +4,9 @@ module RedmineGestaoMp
     def self.included(base)
       base.class_eval do
 
+        has_many :redmine_gestao_mp_risks
+        has_many :redmine_gestao_mp_configs
+
         def parent_and_children(project = self, children = [self])
           project.children.each do |parent|
             children << parent
@@ -124,6 +127,86 @@ module RedmineGestaoMp
           return {color: :red, title: "#{red_light.display_name} - #{red_light.description}"}
         end
 
+        def self_and_parents(project = self, parents = [self])
+          if project.parent
+            parents << project.parent
+            self_and_parents(project.parent, parents)
+          end
+
+          parents
+        end
+
+        def self_and_parent_risks
+          RedmineGestaoMpRisk.where(project_id: self_and_parents.map{|p| p.id})
+        end
+
+        def self_and_child_risks
+          RedmineGestaoMpRisk.where(project_id: parent_and_children.map{|p| p.id})
+        end
+
+        # Retorna a maior criticidade presente dentre os riscos do projeto
+        def criticality
+          criticalities = self.self_and_child_risks.map{|r| r.criticality}
+
+          return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :high_criticality_risk) if criticalities.select{|c| c.name == 'high_criticality_risk'}.any?
+          return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :medium_criticality_risk) if criticalities.select{|c| c.name == 'medium_criticality_risk'}.any?
+          return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :low_criticality_risk)
+        end
+
+        # Define a área do ponteiro do medidor de acordo com a criticidade. 
+        # Os valores são ajustados na área de configuração.
+        def meter_risk_area
+          crit = criticality
+          if crit.name == 'high_criticality_risk'
+            return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :high_meter_risk)
+          elsif crit.name == 'medium_criticality_risk'
+            return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :medium_meter_risk)
+          else
+            return RedmineGestaoMpConfig.find_by_project_id_and_name(self.id, :low_meter_risk)
+          end
+        end
+
+        # 1. É atribuido o valor 100 é para cada risco de um projeto
+        # 2. Faz um somatório das porcentagens de conclusão de cada tarefa. 
+        #    2.1 Se não existir tarefas associadas ao risco ele retorna o valor zero a este somatório
+        #    2.2 Se a tarefa estiver fechada ele retorna o valor 100
+        # 3. É realizado uma regra de tres entre o somatorio do item 2 e os valores atribuidos por projeto do item 1.
+        # 4. O valor retornado é a porcentagem concluida.
+        def risk_strategy_done
+          total_count = 0
+          total_done_ratio = 0
+          
+          self.self_and_child_risks.select{|r| r.criticality.name == criticality.name}.each do |risk|
+            is = risk.issues
+            if is.any?
+              is.each do |issue|
+                total_done_ratio = issue.closed? ? (total_done_ratio + 100) : (total_done_ratio + issue.done_ratio)
+                total_count = total_count + 1
+              end              
+            end
+          end
+
+          unless total_count == 0 and total_done_ratio == 0
+            final_done_ratio = (total_count*100) - total_done_ratio
+            100 - (final_done_ratio * 100) / (total_count * 100)
+          else
+            return 0          
+          end
+        end
+
+        def negative_risk_meter_value  
+          rsd = risk_strategy_done
+          risk_area = meter_risk_area.value
+
+          # Retorna o valor maximo do medidor corrente caso haja algum risco com a estratégia Aceitar.          
+          return risk_area.split('-')[1].to_i if self.self_and_child_risks.select{|r| r.redmine_gestao_mp_risk_strategy.treatable == false }.any?
+
+          # Retorna o valor maximo do medidor corrente caso nenhuma tarefa associada a um risco apresente andamento          
+          return risk_area.split('-')[1].to_i if rsd == 0
+          
+          converted_value = rsd == 100 ? risk_area.split('-')[1].to_i : (rsd * (risk_area.split('-')[1].to_i - risk_area.split('-')[0].to_i)) / 100
+          risk_area.split('-')[1].to_i - converted_value
+        end
       end
     end
   end

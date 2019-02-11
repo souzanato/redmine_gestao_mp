@@ -5,11 +5,19 @@ class RedmineGestaoMpRisksController < ApplicationController
   before_filter :set_redmine_gestao_mp_risk, only: [:show, :edit, :update, :destroy]
 
   def index
-    @redmine_gestao_mp_risks = RedmineGestaoMpRisk.where(project_id: @project.id)
+    @redmine_gestao_mp_risks = RedmineGestaoMpRisk.where(project_id: @project.parent_and_children.map{|p| p.id})
     @risks_by_type = @redmine_gestao_mp_risks.group_by{|r| r.redmine_gestao_mp_risk_type}     
+
+    @high_start = RedmineGestaoMpConfig.where(project_id: @project.id, name: 'high_meter_risk')[0]
+    @medium_start = RedmineGestaoMpConfig.where(project_id: @project.id, name: 'medium_meter_risk')[0]
+    @low_start = RedmineGestaoMpConfig.where(project_id: @project.id, name: 'low_meter_risk')[0]  
+
   end
 
   def show
+    if params[:redmine_gestao_mp_risk_form_details].present?
+      render partial: 'risk_show_table', locals: {risk: @redmine_gestao_mp_risk}
+    end
   end
 
   def new
@@ -38,6 +46,15 @@ class RedmineGestaoMpRisksController < ApplicationController
 
 
   def update
+    respond_to do |format|
+      if @redmine_gestao_mp_risk.update_attributes(params[:redmine_gestao_mp_risk])
+        format.html { redirect_to project_redmine_gestao_mp_risk_path(@project, @redmine_gestao_mp_risk) }
+        format.api  { render :action => 'show', :status => :created, :location => project_redmine_gestao_mp_risk_path(@project, @redmine_gestao_mp_risk) }
+      else
+        format.html { render :action => 'new' }
+        format.api  { render_validation_errors(@risk) }
+      end
+    end     
   end
 
 

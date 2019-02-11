@@ -1,0 +1,36 @@
+$('#ajax-modal').html('<%= escape_javascript(render :partial => 'redmine_gestao_mp_risk_setups/form') %>');
+showModal('ajax-modal', '600px');
+
+
+		$('#redmine_gestao_mp_risk_setup_redmine_gestao_mp_risk_id').on('change', function() {
+			if ($(this).val() != '') {
+				$('#redmine-gestao-mp-risk-setup-submit-button').removeAttr('disabled');
+				$.ajax({
+				  url: "/projects/<%=@project.identifier%>/gestao_mp/risks/" + $(this).val(),
+				  data: {
+				  	redmine_gestao_mp_risk_form_details: true
+				  },
+				  type: "GET",
+				  dataType: "html",
+				  success: function (result) {
+				  	$('#redmine-gestao-mp-risk-form-details').html(result);
+				  },
+				  error: function (xhr, status) {
+				      alert("Sorry, there was a problem!");
+				  },
+				  complete: function (xhr, status) {
+				      //$('#showresults').slideDown('slow')
+				  }
+				});
+
+			} else {
+				$('#redmine-gestao-mp-risk-form-details').html('');
+				$('#redmine-gestao-mp-risk-setup-submit-button').attr('disabled', 'disabled');
+			}
+
+
+
+
+
+
+		})

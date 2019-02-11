@@ -1,28 +1,17 @@
-<%= render partial: 'assets/import' %>
+<%= render partial: 'redmine_gestao_mp_assets/import' %>
 
 <% content_for :sidebar do %>
     <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
 <% end %>
 
+<% if can?(:edit, :redmine_gestao_mp_risks) %>
+	<div class="contextual">
+		<%= link_to l(:button_edit), edit_project_redmine_gestao_mp_risk_path(@project.identifier, @redmine_gestao_mp_risk.id), :onclick => 'showAndScrollTo("update", "issue_notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+	</div>
+<% end %>
+
 <h2><%= "#{t('redmine_gestao_mp_label_risk')} ##{@redmine_gestao_mp_risk.id}"%></h2>
 
-<div class="issue details">
-	<table class="attributes">
-		<tbody>
-			<tr>
-				<th><%= t('field_redmine_gestao_mp_risk_type') %></th>
-				<td><%= @redmine_gestao_mp_risk.redmine_gestao_mp_risk_type.title %></td>
-				<th><%= t('field_title') %></th>
-				<td><%= @redmine_gestao_mp_risk.title %></td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="description">
-		<p><strong><%= t('field_description') %></strong></p>
-		<div class="wiki">
-			<%= @redmine_gestao_mp_risk.description %>
-		</div>
-	</div>
-</div>
+<%= render partial: 'risk_show_table', locals: {risk: @redmine_gestao_mp_risk} %>
 
 <%= link_to l('button_back'), project_redmine_gestao_mp_risks_path(@project) %>

@@ -1,0 +1,26 @@
+		</div>
+	</fieldset>
+</div>
+
+<%= render partial: 'redmine_gestao_mp_assets/import' %>
+
+<fieldset class="redmine-gestao-mp-risk-setup-fieldset">
+	<span data-id="<%= @project.identifier %>" id='redmine-gestap-mp-project'></span>
+	<legend><%= l(:redmine_gestao_mp_label_risk_management) %></legend>
+
+
+	<div id="redmine-gestao-mp-risk-setup-index-table">
+		<% if @issue.redmine_gestao_mp_risks.any? %>
+			<%= render partial: 'redmine_gestao_mp_risk_setups/risks_table', locals: {risks: @issue.redmine_gestao_mp_risks, actions: true} %>
+		<% end %>
+	</div>
+
+	<% unless @project.self_and_parent_risks.any? %>
+		<div class="flash warning" id="flash_warning">
+			<%= l(:redmine_gestao_mp_risk_title_no_risk_found) %>
+			<%= link_to l(:redmine_gestao_mp_go_to_risk), project_redmine_gestao_mp_risks_path(@project) %>
+		</div>
+	<% else %>
+		<%= link_to l(:redmine_gestao_mp_add_risk_setup), new_project_issue_redmine_gestao_mp_risk_setup_path(@project.identifier, @issue.id), remote: true %>
+	<% end %>
+</fieldset>

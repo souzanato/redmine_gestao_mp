@@ -1,0 +1,2 @@
+$('#ajax-modal').html('<%= escape_javascript(render :partial => 'redmine_gestao_mp_risk_issues/index', locals: {issues: @issues}) %>');
+showModal('ajax-modal', '600px');

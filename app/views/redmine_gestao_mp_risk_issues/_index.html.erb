@@ -1,0 +1,18 @@
+<table class="list redmine-gestao-mp-risks-table">
+  <thead>
+    <tr>
+      <th class="center"><%= t('id') %></th>
+      <th><%= t('field_subject') %></th>
+      <th><%= t('field_done_ratio') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+      <tr>
+        <td><%= issue.id %></td>
+        <td><%= link_to issue.subject, issue_path(issue), target: '_blank' %></td>
+        <td><%= issue.done_ratio %>%</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,55 @@
+<div style="width: 100%; overflow: hidden;">
+  <div style="width: 10%; float: left;">
+    <span id="<%=risk_type.code.downcase%>GaugeContainer" data-risk-meter="<%=risk_type.code == 'RISCONEG' ? @project.negative_risk_meter_value : 20 %>"></span>
+  </div>
+
+  <div style="margin-left: 12%">
+      <table class="list redmine-gestao-mp-risks-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= t('field_title') %></th>
+        <th><%= t('redmine_gestao_mp_label_critically') %></th>
+        <th><%= t('field_redmine_gestao_mp_risk_strategy') %></th>
+        <th><%= t('field_subproject') %></th>
+        <th><%= t('redmine_gestao_mp_label_related_issues') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% risks.each do |risk| %>
+        <% criticality = risk.criticality %>
+        <tr data-issues="<%= RedmineGestaoMpRiskSetup.select('issue_statuses.is_closed, issues.done_ratio').joins(:redmine_gestao_mp_risk, issue: :status).where('redmine_gestao_mp_risks.id = ?', risk.id) %>">
+          <td><%= redmine_gestao_mp_risk_criticality_light(criticality) %></td>
+          <td><%= risk.title %></td>
+          <td><%= criticality.display_name %></td>
+          <td class='redmine-gestao-mp-risk-desc-trim'><%= risk.redmine_gestao_mp_risk_strategy.title %></td>
+          <td>
+            <%= redmine_gestao_mp_risk_project_display(risk, @project) %>
+          </td>
+          <td>
+            <%= link_to "#{risk.issues.count} #{t(:redmine_gestao_mp_label_check_related_issues)}", project_redmine_gestao_mp_risk_redmine_gestao_mp_risk_issues_path(@project.identifier, risk.id), class: 'icon icon-issue', remote: true %>
+
+          </td>
+          <td>
+
+            <% if can?(:show, :redmine_gestao_mp_risks) %>
+              <%= link_to l(:label_details), project_redmine_gestao_mp_risk_path(@project.identifier, risk.id), :onclick => 'showAndScrollTo("update", "issue_notes"); return false;', :class => 'icon icon-search', :accesskey => accesskey(:show) %>
+            <% end %> 
+
+
+
+            <% if can?(:edit, :redmine_gestao_mp_risks) %>
+              <%= link_to l(:button_edit), edit_project_redmine_gestao_mp_risk_path(@project.identifier, risk.id), :onclick => 'showAndScrollTo("update", "issue_notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+            <% end %> 
+
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>

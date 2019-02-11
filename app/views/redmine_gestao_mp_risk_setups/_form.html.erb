@@ -1,0 +1,24 @@
+<%= labelled_form_for [@project, @issue, @redmine_gestao_mp_risk_setup], remote: true do |f| %>
+	
+
+		<% unless @project_parent_risks.any? %>
+			<div class="flash warning" id="flash_warning">
+				<%= l(:redmine_gestao_mp_risk_title_no_risk_found) %>
+			</div>
+		<% else %>
+			<h4><%= l(:redmine_gestao_mp_risk_title_select_the_risk) %>:</h4>
+			<div class="box tabular settings">
+					<p >
+						<%= f.grouped_collection_select :redmine_gestao_mp_risk_id, @project.self_and_parents.select{|p| p.redmine_gestao_mp_risks.any?}, :redmine_gestao_mp_risks, :identifier, :id, :type_and_title, {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
+						<%#= f.select :redmine_gestao_mp_risk_id, options_from_collection_for_select(@project_parent_risks, :id, :project_type_and_title, f.object.redmine_gestao_mp_risk_id), {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
+					</p>
+			</div>
+			<div id="redmine-gestao-mp-risk-form-details"></div>
+
+			<%= submit_tag l(:button_save), id: "redmine-gestao-mp-risk-setup-submit-button", disabled: true %>
+			<%= link_to l('button_cancel'), 'javascript:function()', onclick: 'hideModal(this);' %>
+		<% end %>
+
+
+
+<% end %>

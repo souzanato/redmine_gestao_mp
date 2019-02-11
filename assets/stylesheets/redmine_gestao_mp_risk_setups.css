@@ -1,0 +1,28 @@
+.redmine-gestao-mp-risk-setup-fieldset {
+	margin-bottom: 20px;
+
+}
+
+.redmine-gestao-mp-risks-table {
+	margin-bottom: 20px !important;
+}
+
+form#new_redmine_gestao_mp_risk_setup .tabular.settings label {
+	padding: 0;
+}
+
+form#new_redmine_gestao_mp_risk_setup .tabular.settings label {
+	margin-left: -250px;
+}
+
+form#new_redmine_gestao_mp_risk_setup .tabular.settings p {
+	margin-left: 0;
+}
+
+form#new_redmine_gestao_mp_risk_setup .tabular.settings p select {
+	/*margin-left: 30px;*/
+}
+
+form#new_redmine_gestao_mp_risk_setup .tabular p  {
+	padding-left: 0;
+}

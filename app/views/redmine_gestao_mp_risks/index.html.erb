@@ -1,4 +1,4 @@
-<%= render partial: 'assets/import' %>
+<%= render partial: 'redmine_gestao_mp_assets/import' %>
 
 <% content_for :sidebar do %>
     <%= render :partial => 'redmine_gestao_mp_sidebar/content' %>
@@ -18,41 +18,47 @@
 	</p>
 <% else %>
 
-<div class="tabs">
-  <ul>
-  	<% @risks_by_type.keys.each do |risk_type| %>
-	    <li>
-	      <%= link_to risk_type.title.pluralize, { :tab => risk_type.code }, :id => "tab-#{risk_type.code}", :class => (risk_type.code != params[:tab] ? nil : 'selected'), :onclick => "showTab('#{risk_type.code}', this.href); this.blur(); return false;" %>   
-	    </li>
-    <% end %>
-  </ul>
-  
-  <div class="tabs-buttons" style="display:none;">
-    <button class="tab-left" type="button" onclick="moveTabLeft(this);"></button>
-    <button class="tab-right" type="button" onclick="moveTabRight(this);"></button>
-  </div>
-</div>
-
-<script>
-  $(document).ready(function(){
-  	if($.getUrlVar("tab") == null) {
-  		showTab('<%=@risks_by_type.keys.first.code%>')
-  	}
-  });
-</script>
-
-<% @risks_by_type.keys.each do |risk_type| %>
-	<div class="tab-content" id="tab-content-<%=risk_type.code%>" style="<%= risk_type.code != params[:tab] ? 'display:none' : nil %>">
-	  <% unless @risks_by_type[risk_type].any? %>
-	  	<p class="nodata">
-				<%= t('redmine_gestao_mp_risks_no_risks_found') %>
-			</p>
-	  <% else %>
-	  	<%= render partial: 'risk_table', locals: {risks: @risks_by_type[risk_type]} %>
-	  <% end %>
+	<div class="tabs">
+	  <ul>
+	  	<% @risks_by_type.keys.each do |risk_type| %>
+		    <li>
+		      <%= link_to risk_type.title.pluralize, { :tab => risk_type.code }, :id => "tab-#{risk_type.code}", :class => (risk_type.code != params[:tab] ? nil : 'selected'), :onclick => "showTab('#{risk_type.code}', this.href); this.blur(); return false;" %>   
+		    </li>
+	    <% end %>
+	  </ul>
+	  
+	  <div class="tabs-buttons" style="display:none;">
+	    <button class="tab-left" type="button" onclick="moveTabLeft(this);"></button>
+	    <button class="tab-right" type="button" onclick="moveTabRight(this);"></button>
+	  </div>
 	</div>
-<% end %>
 
+	<script>
+	  $(document).ready(function(){
+	  	if($.getUrlVar("tab") == null) {
+	  		showTab('<%=@risks_by_type.keys.first.code%>')
+	  	}
+	  });
+	</script>
 
-
+	<% @risks_by_type.keys.each do |risk_type| %>
+		<div class="tab-content" id="tab-content-<%=risk_type.code%>" style="<%= risk_type.code != params[:tab] ? 'display:none' : nil %>">
+		  <% unless @risks_by_type[risk_type].any? %>
+		  	<p class="nodata">
+					<%= t('redmine_gestao_mp_risks_no_risks_found') %>
+				</p>
+		  <% else %>
+		  	<span id="redmine-gestao-mp-risk-ranges" 
+			  	data-low-start="<%=@low_start.value.split('-')[0]%>" 
+			  	data-low-end="<%=@low_start.value.split('-')[1]%>" 
+			  	data-medium-start="<%=@medium_start.value.split('-')[0]%>"
+			  	data-medium-end="<%=@medium_start.value.split('-')[1]%>"
+			  	data-high-start="<%=@high_start.value.split('-')[0]%>"
+			  	data-high-end="<%=@high_start.value.split('-')[1]%>">
+		  		
+		  	</span>
+		  	<%= render partial: 'risk_index_table', locals: {risks: @risks_by_type[risk_type], risk_type: risk_type} %>
+		  <% end %>
+		</div>
+	<% end %>
 <% end %>

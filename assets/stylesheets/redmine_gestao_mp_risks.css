@@ -1,9 +1,25 @@
 .redmine-gestao-mp-create-risk-icon {background-image: url(/images/exclamation.png)}
 
 .redmine-gestao-mp-risks-table tbody tr td:first-child {
-	min-width: 120px;
+	text-align: center;
 }
 
 .redmine-gestao-mp-risks-table thead tr th, .redmine-gestao-mp-risks-table tbody tr td {
 	text-align: left;
+}
+
+.redmine-gestao-mp-risk-low-criticality {
+	background-color: #34a853;
+}
+
+.redmine-gestao-mp-risk-medium-criticality {
+	background-color: #fbbc05;
+}
+
+.redmine-gestao-mp-risk-high-criticality {
+	background-color: #ea4335;
+}
+
+table.redmine-gestao-mp-risk-issues-table thead tr th:first-child {
+	width: 50px;
 }
