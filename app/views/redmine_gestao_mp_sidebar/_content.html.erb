@@ -9,9 +9,9 @@
 		<% end %>	
 
 		<!-- Menu de riscos: exibe somente se possuir permissao -->
-		<%# if can?(:create, :redmine_gestao_mp_risks) %>
-			<li><%#= active_link_to l(:redmine_gestao_mp_label_risk_plural), project_redmine_gestao_mp_risks_path(@project), class: 'icon-warning', active: [['redmine_gestao_mp_risks'], []], wrap_tag: :li %></li>	
-		<%# end %>	
+		<% if can?(:create, :redmine_gestao_mp_risks) %>
+			<li><%= active_link_to l(:redmine_gestao_mp_label_risk_plural), project_redmine_gestao_mp_risks_path(@project), class: 'icon-warning', active: [['redmine_gestao_mp_risks'], []], wrap_tag: :li %></li>	
+		<% end %>	
 
 		<!-- Menu de configuração: exibe somente se possuir permissao -->
 		<% if can?(:create, :redmine_gestao_mp_config) %>

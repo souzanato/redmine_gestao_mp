@@ -10,11 +10,11 @@
 		<p><%= f.text_area :description, :rows => 8, :class => 'wiki-edit' %></p>
 
 		<p >
-			<%= f.select :redmine_gestao_mp_risk_probability_id, options_from_collection_for_select(RedmineGestaoMpRiskProbability.all, :id, :title, f.object.redmine_gestao_mp_risk_probability_id), {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
+			<%= f.select :redmine_gestao_mp_risk_probability_id, options_from_collection_for_select(RedmineGestaoMpRiskProbability.all, :id, :display_title, f.object.redmine_gestao_mp_risk_probability_id), {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
 		</p>
 
 		<p >
-			<%= f.select :redmine_gestao_mp_risk_impact_id, options_from_collection_for_select(RedmineGestaoMpRiskImpact.all, :id, :title, f.object.redmine_gestao_mp_risk_impact_id), {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
+			<%= f.select :redmine_gestao_mp_risk_impact_id, options_from_collection_for_select(RedmineGestaoMpRiskImpact.all, :id, :display_title, f.object.redmine_gestao_mp_risk_impact_id), {required: true, include_blank: t('redmine_gestao_mp_select_prompt')} %>
 		</p>
 
 		<p >
