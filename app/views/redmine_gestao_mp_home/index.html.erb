@@ -1,6 +1,19 @@
 <%= render partial: 'redmine_gestao_mp_assets/import' %>
 
-<%= welcome_message.html_safe %>
+<h3> Gestão MP
+<p>Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento.</p>
+
+<h4> Notas da versão 0.0.3 </h4>
+<p>A versão 0.0.3 conta com a Página de Boas Vindas, Sinaleiro de Atividades e configurações do plugin.</p>
+
+<h4> Versão Redmine </h4>
+<p>Testado na versão 2.6.3</p>
+
+<h4> Sobre </h4>
+<p>Desenvolvido na CGGPP/DESIS/SGP/MP.</p>
+
+<h4> Instalação </h4>
+<p>Veja no [wiki](https://github.com/souzanato/redmine_gestao_mp/wiki/Instala%C3%A7%C3%A3o)</p>
 
 <% unless redmine_gestao_mp_config_loaded? %>
 	<%= render partial: 'redmine_gestao_mp_config/no_redmine_gestao_mp_config_found' %>
