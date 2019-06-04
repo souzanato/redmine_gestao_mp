@@ -1,7 +1,7 @@
 pt-BR:
   ### Permissões ###
   # Geral #
-  project_module_redmine_gestao_mp: "Gestão MP"
+  project_module_redmine_gestao_mp: "Gestão SGP"
   
   # Home #
   permission_redmine_gestao_mp_view_home: "Ver Pagina inicial"
@@ -29,7 +29,7 @@ pt-BR:
   ### Fim Permissões ###
 
   # General
-  redmine_gestao_mp: "Gestão MP"
+  redmine_gestao_mp: "Gestão SGP"
   redmine_gestao_mp_youre_ready_to_start: "Você está pronto para começar!"
   redmine_gestao_mp_label_actions: "Ações"
   redmine_gestao_mp_label_edit: "Editar"
@@ -37,7 +37,7 @@ pt-BR:
   redmine_gestao_mp_select_prompt: "Por favor, selecione"
 
   # sidebar
-  redmine_gestao_mp_menu: "Menu Gestão MP"
+  redmine_gestao_mp_menu: "Menu Gestão SGP"
   redmine_gestao_mp_label_home: "Início"
   redmine_gestao_mp_label_issue_plural: "Tarefas"
   redmine_gestao_mp_config_plural: "Configurações"

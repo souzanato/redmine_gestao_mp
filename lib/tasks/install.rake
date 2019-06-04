@@ -73,7 +73,7 @@ namespace :redmine do
 				puts "Feito!".green
 
 				puts "\nPlugin configurado com sucesso".bold
-				puts "Solicite a um administrador a configuração de permissões do módulo Gestão MP a outros perfis."
+				puts "Solicite a um administrador a configuração de permissões do módulo Gestão SGP a outros perfis."
 				puts "\n\n"
 
 			end

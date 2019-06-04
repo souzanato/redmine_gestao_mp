@@ -1,6 +1,6 @@
 en:
-  redmine_gestao_mp: "Gestão MP"
+  redmine_gestao_mp: "Gestão SGP"
 
   # permissions
-  project_module_gestao_mp: "Gestão MP"
+  project_module_gestao_mp: "Gestão SP"
   permission_view_tasks: "Ver tarefas"

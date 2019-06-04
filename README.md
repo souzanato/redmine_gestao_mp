@@ -1,5 +1,5 @@
 ### Gestão MP
-Plugin Redmine para suporte na Gestão de Projetos do Ministério do Planejamento.
+Plugin Redmine para suporte na Gestão de Projetos da Secretaria de Gestão e Desempenho de Pessoal
 
 #### Notas da versão 0.0.3
 A versão 0.0.3 conta com a Página de Boas Vindas, Sinaleiro de Atividades e configurações do plugin.
