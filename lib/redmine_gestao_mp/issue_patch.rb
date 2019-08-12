@@ -5,7 +5,7 @@ module RedmineGestaoMp
       base.class_eval do
 
         has_many :redmine_gestao_mp_risk_setups
-        has_many :redmine_gestao_mp_risks, through: :redmine_gestao_mp_risk_setups
+        # has_many :redmine_gestao_mp_risks, through: :redmine_gestao_mp_risk_setups
 
         def light
           resolved_light = resolve_light

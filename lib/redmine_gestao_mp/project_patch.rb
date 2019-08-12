@@ -4,7 +4,7 @@ module RedmineGestaoMp
     def self.included(base)
       base.class_eval do
 
-        has_many :redmine_gestao_mp_risks
+        # has_many :redmine_gestao_mp_risks
         has_many :redmine_gestao_mp_configs
 
         def parent_and_children(project = self, children = [self])
